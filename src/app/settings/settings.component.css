@@ -1,0 +1,142 @@
+.main-container {
+  height: 100%;
+}
+
+.mat-tab-content-details {
+  padding: 15px;
+  padding-left: 25px;
+  height: 550px;
+  max-height: 550px;
+}
+
+.mat-tab-table-content-details {
+  padding: 15px;
+  padding-left: 25px;
+  height: 75%;
+  max-height: 75%;
+}
+
+.mat-tab-inner-fixed-content {
+  height: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+.mat-tab-inner-fixed-table-content {
+  height: 90%;
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.prospect-template-card {
+  border: 1px solid #4E9691;
+  border-left: 12px solid #4E9691;
+}
+
+.prospect-status-card {
+  margin-top: 18px;
+  border: 1px solid #4E9691;
+  border-left: 12px solid #4E9691;
+  padding: unset;
+}
+
+.prospect-status-card li {
+  margin-top: 12px;
+  line-height: 250%;
+}
+
+.prospect-status-card li:first-child {
+  margin-top: 12px;
+}
+
+.campaign-schedule-card {
+  border: 1px solid #4E9691;
+  border-left: 12px solid #4E9691;
+  width: 95%;
+  background-color: #4e969159;
+  margin-top: 2%;
+  padding-right: 12px !important;
+  cursor: pointer;
+}
+
+.date-icon-active {
+  font-size: 18px;
+  border: 1px solid #020202;
+  text-align: center;
+  background: #4e9691;
+  color: white;
+  margin-left: 5px;
+}
+
+.date-icon-notactive {
+  font-size: 18px;
+  border: 1px solid #ffffff;
+  text-align: center;
+  background: #e0e0e0;
+  color: black;
+  margin-left: 5px;
+}
+
+.schedule-card {
+  width: 80%;
+  margin-top: 2%;
+  padding-right: 12px !important;
+  justify-content: center;
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+}
+
+.warning-message {
+  position: absolute;
+  top: 12%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error_msg {
+  color: #FF3366;
+  font-size: 45px;
+}
+
+p.prospect-status-card-text>span {
+  display: inline-block;
+  min-width: 250px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.title-subtitle-section {
+  padding: 10px;
+  margin: 5px;
+}
+
+.campaign-setting-title {
+  color: #4E9691;
+  margin: 1px;
+}
+
+.campaign-setting-subtitle {
+  color: #27262691;
+  margin: unset;
+}
+
+:host ::ng-deep .ck-editor__editable {
+  max-height: 300px !important;
+  height: 118px !important;
+  border: 1px solid black;
+}
+
+.editor-source {
+  text-decoration: none;
+  color: #4E9691;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 5px;
+}

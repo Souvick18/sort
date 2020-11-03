@@ -1,0 +1,53 @@
+<div style="padding:13px;">
+  <button class="whiteicons" mat-icon-button (click)="onStateChange()">
+    <mat-icon [ngStyle]="{'margin-left': (expanded) ? '205px' : 'unset'}">{{expanded ? 'close' : 'menu'}}</mat-icon>
+  </button>
+</div>
+
+<mat-card *ngIf="expanded" class="sidenav-card">
+  <img src="assets/images/BF-RGB-big-BF.png" class ="center">
+  <!-- <h5 style="font-size: 40px; margin-top:5.4%; text-align: center;">BFS MAP SOERT</h5> -->
+</mat-card>
+
+<mat-nav-list>
+
+  <!-- <mat-list-item routerLink="/home" routerLinkActive='active' style="height:50px;">
+    <span class="full-width" *ngIf="expanded">Dashboard</span>
+    <mat-icon style="font-size:27px;" class="whiteicons" mat-list-icon>av_timer</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="/campaign" routerLinkActive='active' style="height:50px;">
+    <span class="full-width" *ngIf="expanded">Campaign</span>
+    <mat-icon style="font-size:27px;" class="whiteicons" mat-list-icon>contact_mail</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="/prospect" routerLinkActive='active' style="height:50px;">
+    <span class="full-width" *ngIf="expanded">Prospect</span>
+    <mat-icon style="font-size:27px;" class="whiteicons" mat-list-icon>supervised_user_circle</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item style="height:50px;">
+    <span class="full-width" *ngIf="expanded">Template</span>
+    <mat-icon style="font-size:27px;" class="whiteicons" mat-list-icon>collections</mat-icon>
+  </mat-list-item> -->
+
+  <mat-list-item routerLink="/settings" routerLinkActive='active' style="height:50px;">
+    <span class="full-width" *ngIf="expanded">Settings</span>
+    <mat-icon style="font-size:27px;" class="whiteicons" mat-list-icon>settings_applications</mat-icon>
+  </mat-list-item>
+
+  <!-- <mat-list-item routerLink="/user" routerLinkActive='active' style="height:50px;">
+    <span class="full-width" *ngIf="expanded">User</span>
+    <mat-icon style="font-size:27px;" class="whiteicons" mat-list-icon>account_circle</mat-icon>
+  </mat-list-item> -->
+
+</mat-nav-list>
+
+<!-- <div style="position:absolute; bottom:15px;">
+    <img *ngIf="expanded" src="assets/images/user.png" alt="User" style="margin-left:8px;" width="60" height="60">
+    <br>
+    <span *ngIf="expanded" style="color:#4e9691; font-size:23px; margin-left:8px; padding-right:6px;">
+      <b>{{ userFullName }}</b>
+    </span>
+    <img [ngClass]="(expanded) ? 'logout-expanded' : 'logout'" src="assets/images/logout.png" alt="logout" width="40" height="40" (click)="logout()">
+</div> -->

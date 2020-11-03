@@ -1,0 +1,158 @@
+<mat-sidenav-container class="main-container" autosize>
+
+  <mat-sidenav #sidenav id="sidenav" mode="side" [class.menu-open]="isExpanded" [class.menu-close]=!isExpanded opened="true">
+    <app-sidenav [expanded]="isExpanded" (changeSidenavState)="changeState($event)"></app-sidenav>
+  </mat-sidenav>
+
+  <div class="main-sidenav-content">
+    <mat-tab-group animationDuration="0ms" mat-stretch-tabs (selectedTabChange)="checkCurrentTab($event)">
+
+      <!-- <mat-tab label="Campaign Schedules">
+        <div class="mat-tab-content-details">
+          <div class="mat-tab-inner-fixed-content">
+
+            <mat-card class="campaign-schedule-card" *ngFor="let schedule of scheduleInit" (click)="checkScheduleDetails(schedule)">
+              <mat-card-title style="font-size:27px;"><b>{{schedule.name}}</b></mat-card-title>
+              <mat-card-title style="font-size:20px;">Timezone <b>{{schedule.timezone.name}}</b></mat-card-title>
+              <mat-card-title style="font-size:20px;">Created On <b>{{schedule.created_at | date: 'yyyy-MM-dd'}}</b>
+                <span style="float:right; margin-top:-20px; font-size:20px;">
+                  <mat-icon [ngClass]="(schedule.sunday_time_range.start === undefined)?'date-icon-notactive':'date-icon-active'">S</mat-icon>
+                  <mat-icon [ngClass]="(schedule.monday_time_range.start === undefined)?'date-icon-notactive':'date-icon-active'">M</mat-icon>
+                  <mat-icon [ngClass]="(schedule.tuesday_time_range.start === undefined)?'date-icon-notactive':'date-icon-active'">T</mat-icon>
+                  <mat-icon [ngClass]="(schedule.wednesday_time_range.start === undefined)?'date-icon-notactive':'date-icon-active'">W</mat-icon>
+                  <mat-icon [ngClass]="(schedule.thursday_time_range.start === undefined)?'date-icon-notactive':'date-icon-active'">T</mat-icon>
+                  <mat-icon [ngClass]="(schedule.friday_time_range.start === undefined)?'date-icon-notactive':'date-icon-active'">F</mat-icon>
+                  <mat-icon [ngClass]="(schedule.saturday_time_range.start === undefined)?'date-icon-notactive':'date-icon-active'">S</mat-icon>
+                </span>
+              </mat-card-title>
+            </mat-card>
+          </div>
+        </div>
+        <div class="schedule-card">
+          <button class="primary-button-lg" (click)=addNewScheduleModal()  mat-raised-button>Add New Schedule</button>
+        </div>
+      </mat-tab> -->
+
+
+      <!-- <mat-tab label="Campaign Settings">
+        <div class="title-subtitle-section">
+          <h2 class="campaign-setting-title">{{userFullName}}</h2>
+          <h3 class="campaign-setting-subtitle">Outgoing emails from this mailbox will have this name as Sender</h3>
+        </div>
+
+        <div class="warning-message" *ngIf="!userAuthorizedMailbox">
+          <p class="error_msg">You have not connected your Mailbox</p>
+        </div>
+
+        <div class="title-subtitle-section">
+          <h2 class="campaign-setting-title" *ngIf="userAuthorizedMailbox">{{userAuthorizedMailbox}}</h2>
+          <h3 class="campaign-setting-subtitle" *ngIf="userAuthorizedMailbox">Outgoing emails will have this address as Sender</h3>
+        </div>
+
+        <div class="title-subtitle-section">
+          <h2 class="campaign-setting-title">Unsubscribe Message</h2>
+          <h3 class="campaign-setting-subtitle">This message will be included at the bottom of all outgoing emails</h3>
+          <br>
+          <ckeditor [editor]="emailUnsubEditor" [disabled]="isUnsubDisabled" [formControl]="emailUnsubscribeBody"></ckeditor>
+        </div>
+
+        <div class="title-subtitle-section">
+          <h2 class="campaign-setting-title">Email Signature</h2>
+          <h3 class="campaign-setting-subtitle">This signature will be included on all outgoing emails sent from this Mailbox</h3>
+          <br>
+
+          <ckeditor [editor]="emailSignatureEditor" [disabled]="isSignEditorDisabled" [formControl]="emailSignatureBody"></ckeditor>
+          <div style="height:30px; border:1px solid #949494; display:flex; justify-content:space-between;">
+            <span style="margin-top:5px; padding-left:10px;" (click)="eventCallSourceCode()">
+                <a class="editor-source" href="javascript:void(0);">View Source</a>
+            </span>
+            <span style="color:#949494; padding-right:10px; margin-top:5px;">
+                Total Words: <b>{{wordCount}}</b>
+            </span>
+          </div>
+
+          <button mat-button cdkFocusInitial class="success-button-md" style="margin-top:15px !important; margin-bottom:15px !important;" (click)="saveSignature()">Save</button>
+        </div>
+      </mat-tab> -->
+
+
+      <!-- <mat-tab label="Prospect Settings">
+        <div class="mat-tab-content-details">
+          <h2 style="color:#4E9691;">Prospect Template</h2>
+
+          <mat-card class="prospect-template-card" *ngIf="this.prospectTemplateInit">
+            <ul style="column-count:4;">
+              <li *ngFor="let template of prospectTemplateInit">
+                <span [ngStyle]="{'font-weight': (template.occurrence === 'M') ? '800' : '500'}">
+                  {{template.field}}
+                  <span *ngIf="template.occurrence === 'M'">*</span>
+                </span>
+              </li>
+            </ul>
+          </mat-card>
+
+          <h2 style="color:#4E9691;">Prospect Status</h2>
+          <mat-card class="prospect-status-card" >
+            <ul>
+              <p *ngFor="let status of prospectStatusInit" class="prospect-status-card-text">
+                <span><b>{{status.prospectStatusTitle}}&nbsp;:</b></span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size: 20px;">{{status.prospectStatusDesc}}</span>
+              </p>
+            </ul>
+          </mat-card>
+        </div>
+      </mat-tab> -->
+
+
+      <mat-tab label="Global DNC">
+        <div class="mat-tab-table-content-details" *ngIf="this.dncInit">
+          <p style="padding-right:17.50%; padding-left:19.50%;">
+            <mat-form-field appearance="outline" style="width:100%; max-height:66px; height:66px;">
+              <input matInput type="text" (keyup)="filterByEmail()" [formControl]="searchEmailForm" placeholder="Email Address (e.g. supriyo.debnath@buyerforesight.com)">
+              <!-- <mat-icon style="cursor:pointer;" matSuffix>search</mat-icon> -->
+            </mat-form-field>
+
+            <span class="error_msg" *ngIf="submittedSearchEmail && !searchEmailForm.valid">*Please input a valid email address</span>
+          </p>
+
+          <div class="mat-tab-inner-fixed-table-content">
+            <table mat-table [dataSource]="dncDataSource" matSort class="mat-elevation-z6">
+              <ng-container matColumnDef="firstname">
+                <th mat-header-cell *matHeaderCellDef class="table-header-column" mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let dnc"> {{dnc.prospect.firstname | getFullName: dnc.prospect.middlename: dnc.prospect.lastname}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="email_address">
+                <th mat-header-cell *matHeaderCellDef class="table-header-column" mat-sort-header> Email Address </th>
+                <td mat-cell *matCellDef="let dnc"> {{dnc.prospect.email_address}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="dnc_reason">
+                <th mat-header-cell *matHeaderCellDef class="table-header-column" mat-sort-header> DNC Reason </th>
+                <td mat-cell *matCellDef="let dnc"> {{dnc.dnc_reason}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="created_at">
+                <th mat-header-cell *matHeaderCellDef class="table-header-column" mat-sort-header> DNC Date </th>
+                <td mat-cell *matCellDef="let dnc"> {{dnc.created_at | date: 'yyyy-MM-dd'}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="dncDataHeader" style="background-color:#4e969161; color:#4e9691;"></tr>
+              <tr mat-row *matRowDef="let row; columns: dncDataHeader;"></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- <div class="schedule-card" style="justify-content:center; display:flex;">
+          <button class="primary-button-lg" (click)=addNewDNCModal() mat-raised-button>Add New DNC</button>
+        </div> -->
+      </mat-tab>
+
+
+      <!-- <mat-tab label="Email Validation">
+        <h1 style="padding-left:36px;">Email Validation Coming Soon</h1>
+      </mat-tab> -->
+    </mat-tab-group>
+  </div>
+
+</mat-sidenav-container>

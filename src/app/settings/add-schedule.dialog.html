@@ -1,0 +1,106 @@
+<mat-icon  mat-dialog-close class="close-button">close</mat-icon>
+
+<mat-dialog-content>
+  <mat-card-title style="text-align:left; font-size:35px; padding-bottom:10px;">New Campaign Schedule</mat-card-title>
+  <form *ngIf="addScheduleForm" [formGroup]="addScheduleForm">
+    <div>
+      <mat-form-field appearance="fill" style="width:100%;">
+        <mat-label>Name*</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="width:50%; float:right;">
+        <mat-label>Timezone*</mat-label>
+        <mat-select formControlName="timezone">
+          <mat-option value="0" disabled>Select One</mat-option>
+          <mat-option *ngFor="let timezone of timezoneInit" [value]="timezone.stg_id">{{timezone.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div style="width:100%; margin-top:10%;">
+      <div class="schedule-field-body">
+        <div class="schedule-field-title">Sunday<mat-icon (click)="addTimeDialog('Sunday')">more_time </mat-icon></div>
+        <div class="schedule-time" *ngIf="sundayStartTime && sundayEndTime">
+          {{sundayStartTime}} to {{sundayEndTime}}
+        </div>
+        <mat-icon class="schedule-time-remove-icon" *ngIf="sundayStartTime && sundayEndTime" (click)="removeSelectedTime('Sunday')">
+          cancel
+        </mat-icon>
+      </div>
+
+      <div class="schedule-field-body">
+        <div class="schedule-field-title">Monday<mat-icon (click)="addTimeDialog('Monday')">more_time </mat-icon></div>
+        <div class="schedule-time" *ngIf="mondayStartTime && mondayEndTime">
+          {{mondayStartTime}} to {{mondayEndTime}}
+        </div>
+        <mat-icon class="schedule-time-remove-icon" *ngIf="mondayStartTime && mondayEndTime" (click)="removeSelectedTime('Monday')">
+          cancel
+        </mat-icon>
+      </div>
+
+      <div class="schedule-field-body">
+        <div class="schedule-field-title">Tuesday<mat-icon (click)="addTimeDialog('Tuesday')">more_time </mat-icon></div>
+        <div class="schedule-time" *ngIf="tuesdayStartTime && tuesdayEndTime">
+          {{tuesdayStartTime}} to {{tuesdayEndTime}}
+        </div>
+        <mat-icon class="schedule-time-remove-icon" *ngIf="tuesdayStartTime && tuesdayEndTime" (click)="removeSelectedTime('Tuesday')">
+          cancel
+        </mat-icon>
+      </div>
+
+      <div class="schedule-field-body">
+        <div class="schedule-field-title">Wednesday<mat-icon (click)="addTimeDialog('Wednesday')">more_time </mat-icon></div>
+        <div class="schedule-time" *ngIf="wednesdayStartTime && wednesdayEndTime">
+          {{wednesdayStartTime}} to {{wednesdayEndTime}}
+        </div>
+        <mat-icon class="schedule-time-remove-icon" *ngIf="wednesdayStartTime && wednesdayEndTime" (click)="removeSelectedTime('Wednesday')">
+          cancel
+        </mat-icon>
+      </div>
+
+      <div class="schedule-field-body">
+        <div class="schedule-field-title">Thursday<mat-icon (click)="addTimeDialog('Thursday')">more_time </mat-icon></div>
+        <div class="schedule-time" *ngIf="thursdayStartTime && thursdayEndTime">
+          {{thursdayStartTime}} to {{thursdayEndTime}}
+        </div>
+        <mat-icon class="schedule-time-remove-icon" *ngIf="thursdayStartTime && thursdayEndTime" (click)="removeSelectedTime('Thursday')">
+          cancel
+        </mat-icon>
+      </div>
+
+      <div class="schedule-field-body">
+        <div class="schedule-field-title">Friday<mat-icon (click)="addTimeDialog('Friday')">more_time </mat-icon></div>
+        <div class="schedule-time" *ngIf="fridayStartTime && fridayEndTime">
+          {{fridayStartTime}} to {{fridayEndTime}}
+        </div>
+        <mat-icon class="schedule-time-remove-icon" *ngIf="fridayStartTime && fridayEndTime" (click)="removeSelectedTime('Friday')">
+          cancel
+        </mat-icon>
+      </div>
+
+      <div class="schedule-field-body">
+        <div class="schedule-field-title">Saturday<mat-icon (click)="addTimeDialog('Saturday')">more_time </mat-icon></div>
+        <div class="schedule-time" *ngIf="saturdayStartTime && saturdayEndTime">
+          {{saturdayStartTime}} to {{saturdayEndTime}}
+        </div>
+        <mat-icon class="schedule-time-remove-icon" *ngIf="saturdayStartTime && saturdayEndTime" (click)="removeSelectedTime('Saturday')">
+          cancel
+        </mat-icon>
+      </div>
+   </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div class="progress-spinner" *ngIf="serviceResponseProgress">
+    <mat-progress-spinner *ngIf="serviceResponseProgress"
+            class="progress-spinner-margin"
+            [color]="srpColor"
+            [mode]="srpMode"
+            [value]="srpValue">
+    </mat-progress-spinner>
+  </div>
+
+  <button mat-button cdkFocusInitial (click)="eventCallSubmit()" style="margin-top:unset !important;" class="success-button-md">Submit</button>
+</mat-dialog-actions>

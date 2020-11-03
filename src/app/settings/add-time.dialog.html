@@ -1,0 +1,44 @@
+<mat-icon  mat-dialog-close class="close-button">close</mat-icon>
+
+<mat-dialog-content>
+  <mat-card-title style="text-align:left; font-size:35px; padding-bottom:10px;"> Schedule for {{this.selectedDay}}</mat-card-title>
+
+  <p>
+    <mat-form-field appearance="fill" style="width:45%;">
+      <mat-label>Starts at</mat-label>
+      <input [formControl]="startTime" matInput [ngxTimepicker]="selStartTime" autocomplete="off"/>
+
+      <ngx-material-timepicker #selStartTime [theme]="schdPickerTheme" [cancelBtnTmpl]="cancelBtn" [confirmBtnTmpl]="confirmBtn"></ngx-material-timepicker>
+
+      <ng-template #cancelBtn>
+        <button mat-button class="danger-button-timepicker">CANCEL</button>
+      </ng-template>
+
+      <ng-template #confirmBtn>
+        <button mat-button class="success-button-timepicker">OK</button>
+      </ng-template>
+    </mat-form-field>
+
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+
+    <mat-form-field appearance="fill" style="width:45%;">
+      <mat-label>Ends at</mat-label>
+      <input [formControl]="endTime" matInput [ngxTimepicker]="selEndTime" autocomplete="off"/>
+
+      <ngx-material-timepicker #selEndTime [theme]="schdPickerTheme" [cancelBtnTmpl]="cancelBtn" [confirmBtnTmpl]="confirmBtn"></ngx-material-timepicker>
+
+      <ng-template #cancelBtn>
+        <button mat-button class="danger-button-timepicker">CANCEL</button>
+      </ng-template>
+
+      <ng-template #confirmBtn>
+        <button mat-button class="success-button-timepicker">OK</button>
+      </ng-template>
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button class="danger-button-md" (click)=eventCallReset()>Reset</button>
+  <button mat-button cdkFocusInitial class="success-button-md" (click)=eventCallConfirm()>Confirm</button>
+</mat-dialog-actions>
